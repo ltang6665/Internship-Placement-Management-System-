@@ -1,0 +1,26 @@
+/references
+
+# Java build output
+/bin/
+/out/
+/target/
+*.class
+
+# Generated Javadoc output
+/docs/
+
+# Eclipse workspace and project state
+/.metadata/
+/.settings/
+/.classpath
+/.project
+/.recommenders/
+
+# IntelliJ IDEA project state
+/.idea/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,64 @@
+// main app class 
+// runs main
+// include login and logout functions to dictate current user 
+package IPMS.System;
+
+import IPMS.SystemPages.CommonPages.MainPage;
+import IPMS.SystemPages.PageUtilities.Page;
+import IPMS.SystemPages.PageUtilities.PageAction;
+import java.util.Stack;
+import IPMS.UserManagement.UserManager;
+
+
+public class SystemApp {
+
+    public static String currentUser = null;
+
+    public static void main(String[] args) {
+
+
+        // things to run before the start of the code 
+        UserManager.UsernameCSVGenerator();
+        SystemData.loadAll();
+        
+        Stack<Page> nav = new Stack<>();
+        nav.push(new MainPage());   // Start at the main menu
+
+        // --- Main Loop ---
+        while (!nav.isEmpty()) {
+
+            Page current = nav.peek();   // Top of stack = current page
+
+            current.showMenu();          // Display page UI
+            PageAction action = current.next();  // Process user input
+
+            // Handle page navigation
+            switch (action.gettype()) {
+                case PUSH -> nav.push(action.getnextPage());
+                case POP  -> nav.pop();
+                case EXIT -> nav.clear();  // Clear stack = exit program
+                case STAY -> nav.peek(); //???? need for stay?
+            }
+        }
+        
+        SystemData.saveAll();
+        
+    }       
+
+    public static void setCurrentUser(String user) {
+        currentUser = user;
+    }       
+
+    //username from user login and creates object?
+    // protected or public or private?
+    public static void login(String username) {
+        currentUser = username;
+    }
+
+
+
+
+    
+
+    
+}
