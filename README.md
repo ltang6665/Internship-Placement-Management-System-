@@ -53,6 +53,3 @@ Diagrams/   UML diagram source files and rendered images
 run.bat     Windows compile-and-run script
 ```
 
-## Project context
-
-This is an educational OOP project. It demonstrates role-based workflows, object-oriented models, and flat-file persistence; it is not intended as a production placement platform.
